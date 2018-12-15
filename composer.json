@@ -1,0 +1,13 @@
+{
+    "name": "wangchao/mime-type-sniffer",
+    "description": "a php mime type sniffer inspired by chrome cpp code",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wang Chao",
+            "email": "watcher.hangzhou@foxmail.com"
+        }
+    ],
+    "require": {}
+}
