@@ -9,5 +9,10 @@
             "email": "watcher.hangzhou@foxmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "MimeTypeSniffer\\": "src/MimeTypeSniffer"
+        }
+    }
 }
