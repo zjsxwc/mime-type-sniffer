@@ -1,13 +1,12 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: wangchao
+ * User: wangchao - watcher.hangzhou@foxmail.com
  * Date: 15/12/2018
  * Time: 3:54 PM
  */
 
-namespace MimeTypeSniffer;
-
+namespace UserBundle\Util\MimeTypeSniffer;
 
 
 class MimeTypeSniffer
@@ -298,8 +297,11 @@ class MimeTypeSniffer
         if ($this->sniffForXMLOrHTML($content, $result)) {
             return true;
         }
-
-        return $this->sniffBinary($content, $result);
+        if ($this->sniffBinaryOrPlainText($content, $result)) {
+            return true;
+        }
+        $result = "application/unknown";
+        return false;
     }
 
 
@@ -332,7 +334,7 @@ class MimeTypeSniffer
         return false;
     }
 
-    private function sniffBinary($content, &$result)
+    private function sniffBinaryOrPlainText($content, &$result)
     {
         $byteOrderMark = [
             new MagicNumber("text/plain", "\xFE\xFF"),  // UTF-16BE
@@ -340,14 +342,14 @@ class MimeTypeSniffer
             new MagicNumber("text/plain", "\xEF\xBB\xBF"),  // UTF-8
         ];
         if ($this->checkForMagicNumbers($content, strlen($content), $byteOrderMark, $result)) {
-            return false;
+            return true;
         }
         if ($this->looksLikeBinary($content)) {
             $result = "application/octet-stream";
             return true;
+        } else {
+            return false;
         }
-        $result = "text/plain";
-        return false;
     }
 
 
