@@ -6,7 +6,7 @@
  * Time: 3:54 PM
  */
 
-namespace UserBundle\Util\MimeTypeSniffer;
+namespace MimeTypeSniffer;
 
 
 class MimeTypeSniffer
