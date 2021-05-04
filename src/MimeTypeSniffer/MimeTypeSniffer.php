@@ -273,6 +273,17 @@ class MimeTypeSniffer
         return $content;
     }
 
+    /**
+     * @param $path
+     * @param $filename
+     * @return string
+     */
+    public function sniffMimeType($fileFullPath, $fileOriginalName)
+    {
+        $mimeTypeResult = "";
+        $this->innerSniffMimeType($fileFullPath, $mimeTypeResult, $fileOriginalName);
+        return $mimeTypeResult;
+    }
 
     /**
      * @param $path
@@ -280,7 +291,7 @@ class MimeTypeSniffer
      * @param $filename
      * @return bool
      */
-    public function sniffMimeType($path, &$result, $filename)
+    public function innerSniffMimeType($path, &$result, $filename)
     {
         $content = $this->getEnoughContent($path);
         $result = "application/unknown";
