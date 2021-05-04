@@ -9,7 +9,7 @@ Chrome的源C++代码地址是： https://github.com/chromium/chromium/blob/9dee
 
 $mimeTypeResult = 
     (new MimeTypeSniffer())
-        ->sniffMimeType($fileFullPath, $fileOriginalName);
+        ->sniff($fileFullPath, $fileOriginalName);
 
 echo $mimeTypeResult;
 
