@@ -8,6 +8,9 @@
 
 include "autoload.php";
 
+//ini_set("zend.assertions", 1);
+//ini_set("assert.active", "On");
+//ini_set("assert.exception", "On");
 
 function testDoc()
 {
@@ -28,3 +31,10 @@ function testDocx()
 }
 testDocx();
 
+function testSniffDocx()
+{
+    $mimeTypeResult = (new \MimeTypeSniffer\MimeTypeSniffer())
+        ->sniff(__DIR__ . "/files/test.docx",  "test.doc");
+    assert("application/vnd.openxmlformats-officedocument.wordprocessingml.document" === $mimeTypeResult);
+}
+testSniffDocx();
